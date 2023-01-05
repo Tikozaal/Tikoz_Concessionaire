@@ -17,9 +17,9 @@ Config.Blip = {
 
 Config.Pos = {
 
-	VehiculeExpo = true,
+	VehiculeExpo = true, -- Si vous voulez que les véhicules spawn = true
 
-	BuyVehicule = true,
+	BuyVehicule = true, -- Si vous voulez qu'on puisse acheter les véhicules = true 
 
 	SortiVehicule = vector4(-36.38, -1100.34, 26.42, 338.01),
 
