@@ -447,3 +447,25 @@ AddEventHandler('Tikoz:RetireTchop', function (id)
 	}, function ()
 	end)
 end)
+
+ESX.RegisterServerCallback('Tikoz/getownedveh', function(source, cb, plate)
+    local xPlayer = ESX.GetPlayerFromId(source)
+	owned = {}
+	MySQL.Async.fetchAll('SELECT * FROM owned_vehicles', {
+    }, function(result)
+        for i=1, #result, 1 do
+            table.insert(owned, {
+				id = result[i].id,
+                owner = result[i].owner,
+				plate = result[i].plate,
+            })
+        end
+        for k, v in pairs(owned) do
+			if v.plate == plate then
+				if xPlayer.identifier == v.owner then
+					cb(true)
+				end
+			end
+		end
+    end)
+end)
