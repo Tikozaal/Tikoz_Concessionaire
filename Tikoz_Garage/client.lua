@@ -243,7 +243,7 @@ menufourriere = {
                     for i=1, #garageowner, 1 do
                         if iden == garageowner[i].owner then
                             if garageowner[i].stored == 2 then
-                                table.insert(menufourriere.Menu["Fourrière"].b, { name = garageowner[i].label, ask = "~b~"..garageowner[i].plate, askX = true})
+                                table.insert(menufourriere.Menu["Fourrière"].b, { name = garageowner[i].label, ask = "~b~"..garageowner[i].plate, askX = true, id = garageowner[i].id})
                             end
                         end
                     end
@@ -251,11 +251,12 @@ menufourriere = {
                 end
     
                 for i=1, #garageowner, 1 do
-                    if btn.name == garageowner[i].label then
+                    if btn.name == garageowner[i].label and btn.id == garageowner[i].id then
                         if iden == garageowner[i].owner then
                             veh = garageowner[i].vehicle
                             pi = garageowner[i].name
                             TriggerServerEvent("Tikoz:FourriereSortVehPayant", veh, pi)
+                            return 
                         end
                     end
                 end
